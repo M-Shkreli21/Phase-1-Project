@@ -52,7 +52,6 @@ function displayAgent(agent) {
         agentDiv.appendChild(agentSelector)
         agentSelector.appendChild(agentImage)
 
-
         agentImage.addEventListener('click', (e) => {
             e.preventDefault()
 
@@ -79,9 +78,18 @@ function displayAgent(agent) {
             agentSelector.append(agentName)
             agentSelector.append(agentDescription)
             agentSelector.append(pAbilities)
+
+            agentImage.addEventListener('click', (e) => {
+                e.preventDefault()
+                if (agentName.textContent != ""){
+                    agentName.remove()
+                    agentDescription.remove()
+                    pAbilities.remove()
+                }
+            })
+            
         })
-    })
-}
+})}
 
 gameModeClick.addEventListener('click', (e) => {
     e.preventDefault()
