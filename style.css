@@ -30,6 +30,8 @@ nav{
 #homepage-container{
     background-color: white;
     border-radius: 5px;
+    overflow-y: scroll;
+    height: 70vh;
 }
 
 #agent-container{
