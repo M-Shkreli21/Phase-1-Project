@@ -23,9 +23,6 @@ agentClick.addEventListener('click', (e) => {
 
 function displayAgent(agent) {
     agent.data.forEach(agent => {
-        const agentSelector = document.createElement('ul')
-        const agentName = document.createElement('p')
-        const agentDescription = document.createElement('p')
         const agentImage = document.createElement('img')
         const pAbilities = document.createElement('ul')
 
@@ -37,7 +34,10 @@ function displayAgent(agent) {
         agentImage.addEventListener('click', (e) => {
             e.preventDefault()
 
-            
+            const agentSelector = document.createElement('ul')
+        const agentName = document.createElement('p')
+        const agentDescription = document.createElement('p')
+
             const agentAbilities = agent.abilities.forEach(abilities => {
                 const pEachAbilityDescription = document.createElement('p')
                 const pEachAbilityName = document.createElement('p')
