@@ -22,6 +22,16 @@ body {
   text-rendering: optimizeSpeed;
   line-height: 1.5;
 }
+
+nav{
+    background-color: white;
+}
+
+#homepage-container{
+    background-color: white;
+    border-radius: 5px;
+}
+
 #agent-container{
     overflow-y: scroll;
     height: 70vh;

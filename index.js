@@ -1,6 +1,8 @@
+const homeDiv = document.querySelector('#homepage-container')
 const agentDiv = document.querySelector('#agent-container')
 const weaponDiv = document.querySelector('#weapon-container')
 const nav = document.querySelector('.nav_bar')
+const homeClick = document.querySelector('#homepage')
 const agentClick = document.querySelector('#agent_name')
 const weaponClick = document.querySelector('#weapon_name')
 const heavyWeapon = document.querySelector('#heavy_weapon')
@@ -9,8 +11,20 @@ const mapDiv = document.getElementById('map-container')
 const gameModeClick = document.getElementById('game_mode')
 const mapName = document.getElementById('map_name')
 
+function homePage() {
+    homeDiv.style.display = 'block'
+    weaponDiv.style.display = 'none'
+    gameModeDiv.style.display = 'none'
+    mapDiv.style.display = 'none'
+    agentDiv.style.display = 'none'
+}
+
+homeClick.addEventListener('click', homePage)
+
+
 agentClick.addEventListener('click', (e) => {
     e.preventDefault()
+    homeDiv.style.display = 'none'
     weaponDiv.style.display = 'none'
     gameModeDiv.style.display = 'none'
     mapDiv.style.display = 'none'
@@ -23,21 +37,21 @@ agentClick.addEventListener('click', (e) => {
 
 function displayAgent(agent) {
     agent.data.forEach(agent => {
-        const agentSelector = document.createElement('ul')
-        const agentName = document.createElement('p')
-        const agentDescription = document.createElement('p')
         const agentImage = document.createElement('img')
-        const pAbilities = document.createElement('ul')
+        const agentSelector = document.createElement('p')
 
         agentImage.src = agent.displayIconSmall
 
         agentDiv.appendChild(agentSelector)
         agentSelector.appendChild(agentImage)
 
+
         agentImage.addEventListener('click', (e) => {
             e.preventDefault()
 
-            
+            const agentName = document.createElement('h2')
+            const agentDescription = document.createElement('p')
+            const pAbilities = document.createElement('ul')
             const agentAbilities = agent.abilities.forEach(abilities => {
                 const pEachAbilityDescription = document.createElement('p')
                 const pEachAbilityName = document.createElement('p')
@@ -55,9 +69,9 @@ function displayAgent(agent) {
             agentName.textContent = agent.displayName
             agentDescription.textContent = agent.description
 
-            agentImage.appendChild(agentName)
-            agentImage.appendChild(agentDescription)
-            agentImage.appendChild(pAbilities)
+            agentSelector.append(agentName)
+            agentSelector.append(agentDescription)
+            agentSelector.append(pAbilities)
         })
     })
 }
@@ -65,6 +79,7 @@ function displayAgent(agent) {
 gameModeClick.addEventListener('click', (e) => {
     e.preventDefault()
 
+    homeDiv.style.display = 'none'
     weaponDiv.style.display = 'none'
     gameModeDiv.style.display = 'block'
     mapDiv.style.display = 'none'
@@ -82,6 +97,7 @@ gameModeClick.addEventListener('click', (e) => {
 
 function displayGameMode(gameMode) {
     gameMode.data.forEach(gameMode => {
+        const gameModeDescription = document.createElement('p')
         const nombre = document.createElement('p')
         nombre.textContent = gameMode.displayName
         const time = document.createElement('li')
@@ -98,6 +114,7 @@ function displayGameMode(gameMode) {
 mapName.addEventListener('click', (e) => {
     e.preventDefault()
 
+    homeDiv.style.display = 'none'
     weaponDiv.style.display = 'none'
     gameModeDiv.style.display = 'none'
     mapDiv.style.display = 'block'
@@ -115,7 +132,7 @@ mapName.addEventListener('click', (e) => {
 function displayGameMap(Map) {
     Map.data.forEach(Map => {
 
-        const mapName = document.createElement('li')
+        const mapName = document.createElement('p')
         const mapImage = document.createElement('img')
         const mapOverview = document.createElement('img')
         const mapCordinates = document.createElement('p')
@@ -146,6 +163,7 @@ function displayGameMap(Map) {
 weaponClick.addEventListener('click', (e) => {
     e.preventDefault()
 
+    homeDiv.style.display = 'none'
     weaponDiv.style.display = 'block'
     gameModeDiv.style.display = 'none'
     mapDiv.style.display = 'none'
@@ -157,29 +175,61 @@ weaponClick.addEventListener('click', (e) => {
 })
 
 function displayWeapon(weapons) {
+    console.log(weapons)
     weapons.data.forEach(weapons => {
-        const weaponName = document.createElement('p')
+        const weaponName = document.createElement('h2')
         const weaponImage = document.createElement('img')
-        const weaponShop = document.createElement('ul')
-        const category = document.createElement('p')
-        const cost = document.createElement('p')
+        const weaponSelector = document.createElement('p')
 
         weaponName.textContent = weapons.displayName
         weaponImage.src = weapons.displayIcon
 
-        weaponDiv.appendChild(weaponImage)
-        weaponShop.appendChild(weaponName)
+        weaponDiv.appendChild(weaponSelector)
+        weaponSelector.appendChild(weaponName)
+        weaponSelector.appendChild(weaponImage)
+        
 
         weaponImage.addEventListener('click', (e) => {
             e.preventDefault()
 
-            category.textContent = weapons.shopData.categoryText
-            cost.textContent = `$ ${weapons.shopData.cost}`
+            const weaponShop = document.createElement('ul')
+            const category = document.createElement('p')
+            const cost = document.createElement('p')
+            const reloadSpeed = document.createElement('p')
+            const magazineSize = document.createElement('p')
+            const statsADS = document.createElement('p')
+            const statsHipFire = document.createElement('p')
+            const fireRateADS = document.createElement('ul')
+            const firstBulletADS = document.createElement('ul')
+            const zoomMultiplierADS = document.createElement('ul')
+            const fireRateHipFire = document.createElement('ul')
+            const firstBulletHipFire = document.createElement('ul')
+
+            category.textContent = `CATEGORY: ${weapons.shopData.categoryText}`
+            cost.textContent = `Cost: $ ${weapons.shopData.cost}`
+            reloadSpeed.textContent = `Reload Speed: ${weapons.weaponStats.reloadTimeSeconds} seconds`
+            magazineSize.textContent = `Magazine Size: ${weapons.weaponStats.magazineSize}`
+            statsADS.textContent = 'Weapon Stats ADS:'
+            fireRateADS.textContent = `ADS Fire Rate: ${weapons.weaponStats.adsStats.fireRate}`
+            firstBulletADS.textContent = `ADS First Bullet Accuracy: ${weapons.weaponStats.adsStats.firstBulletAccuracy}%`
+            zoomMultiplierADS.textContent = `ADS Zoom Multiplier: ${weapons.weaponStats.adsStats.zoomMultiplier}x`
+            statsHipFire.textContent = `Weapon Stats Hip Fire:`
+            fireRateHipFire.textContent = `Hip Fire Fire Rate: ${weapons.weaponStats.fireRate}`
+            firstBulletHipFire.textContent = `Hip Fire First Bullet Accuracy: ${weapons.weaponStats.firstBulletAccuracy}%`
 
 
-            weaponImage.appendChild(weaponShop)
+            weaponSelector.appendChild(weaponShop)
             weaponShop.appendChild(category)
             weaponShop.appendChild(cost)
+            weaponShop.appendChild(reloadSpeed)
+            weaponShop.appendChild(magazineSize)
+            weaponShop.appendChild(statsADS)
+            weaponShop.appendChild(statsHipFire)
+            statsHipFire.appendChild(fireRateHipFire)
+            statsHipFire.appendChild(firstBulletHipFire)
+            statsADS.appendChild(fireRateADS)
+            statsADS.appendChild(firstBulletADS)
+            statsADS.appendChild(zoomMultiplierADS)
         })
     })
 };
