@@ -14,6 +14,11 @@ nav{
     background-color: white;
 }
 
+#homepage-container{
+    background-color: white;
+    border-radius: 5px;
+}
+
 #agent-container{
     background-color: white;
     border-radius: 5px;
