@@ -9,6 +9,7 @@
 }
 * {
     padding: 0;
+
 }
 html:focus-within {
     scroll-behavior: smooth;
@@ -55,7 +56,7 @@ body {
 }
 .game-mode{
     background-color:rgb(108, 125, 159, 0.2); 
-    color: rgb(175, 16, 93);
+    color: rgb(134, 21, 21);
 }
 .duration{
     list-style: none; 
@@ -93,4 +94,6 @@ button {
 h1{
     text-align: center;
     color: rgb(134, 21, 21);
+    background-color: rgba(82, 100, 104, 0.2);
+    border-color: transparent;
 }
