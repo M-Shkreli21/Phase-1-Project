@@ -24,11 +24,11 @@ body {
 }
 
 nav{
-    background-color: white;
+    /* background-color: white; */
 }
 
 #homepage-container{
-    background-color: white;
+    /* background-color: white; */
     border-radius: 5px;
     overflow-y: scroll;
     height: 70vh;
