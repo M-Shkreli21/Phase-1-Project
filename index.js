@@ -72,6 +72,7 @@ gameModeClick.addEventListener('click', (e) => {
 
     const gameModeh1 = document.createElement('h1')
     gameModeh1.textContent = 'Game Mode:'
+    gameModeh1.classList.add('game-mode')
     gameModeDiv.appendChild(gameModeh1)
 
     fetch('https://valorant-api.com/v1/gamemodes')
@@ -85,9 +86,12 @@ function displayGameMode(gameMode) {
         nombre.textContent = gameMode.displayName
         const time = document.createElement('li')
         time.textContent = gameMode.duration
+        time.classList.add('duration')
+        nombre.classList.add('dispaly-name')
 
         gameModeDiv.appendChild(nombre)
         gameModeDiv.appendChild(time)
+
     })
 }
 
@@ -115,13 +119,19 @@ function displayGameMap(Map) {
         const mapImage = document.createElement('img')
         const mapOverview = document.createElement('img')
         const mapCordinates = document.createElement('p')
+        const mapName_p = document.createElement('p')
 
-        mapName.textContent = Map.displayName
+        mapName_p.textContent = Map.displayName
+        mapName_p.classList.add('map-name-p')
+        
         mapDiv.appendChild(mapName)
-
+        mapName.appendChild(mapName_p)
+        mapName.classList.add('map-name')
         mapName.addEventListener('click', (e) => {
             e.preventDefault()
             mapImage.src = Map.displayIcon
+            mapImage.classList.add("map-image")
+            mapOverview.classList.add("map-image")
             mapOverview.src = Map.splash
             mapCordinates.textContent = Map.coordinates
 

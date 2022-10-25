@@ -1,36 +1,96 @@
-h1{
-    background-color: white;
+*,
+*::before,
+*::after {
+  animation-duration: 0.01ms !important;
+  animation-iteration-count: 1 !important;
+  transition-duration: 0.01ms !important;
+  scroll-behavior: auto !important;
+  box-sizing: border-box;
+}
+* {
+    padding: 0;
+}
+html:focus-within {
+    scroll-behavior: smooth;
 }
 
-body{
-    background-image: url(https://images.wallpapersden.com/image/download/valorant-hd-gaming-2022_bWlsZ2iUmZqaraWkpJRnZ2hprWZnams.jpg);
-    margin: auto;
-    height: auto;
-    width: auto;
-    opacity: 50;
+body {
+    background-image: url(https://www.riotgames.com/darkroom/1440/d0807e131a84f2e42c7a303bda672789:3d02afa7e0bfb75f645d97467765b24c/valorant-offwhitelaunch-keyart.jpg);
+    height: 100vh;
+    overflow: hidden;
+  text-rendering: optimizeSpeed;
+  line-height: 1.5;
 }
-
-nav{
-    background-color: white;
-}
-
 #agent-container{
-    background-color: white;
-    border-radius: 5px;
+    overflow-y: scroll;
+    height: 70vh;
 }
-
-#weapon-container{
-    background-color: white;
-    border-radius: 5px;
-}
-
-#gameMode-container{
-        background-color: white;
-        border-radius: 5px;
-}
-
 #map-container{
-    background-color: white;
-    border-radius: 5px;
+    overflow-y: scroll;
+    height: 70vh;
 }
-    
+#gameMode-container{
+    overflow-y: scroll;
+    height: 70vh;
+}
+#weapon-container{
+    overflow-y: scroll;
+    height: 70vh;
+}
+.map-image{
+    /* width: 40vw; */
+    height: 40vh;
+    /* height: 100px; */
+}
+.map-name{
+    list-style:none;
+}
+.map-name-p{
+    width: 10vw;
+    text-align: center;
+    font-size: x-large;
+    color: rgb(87, 67, 67);
+    border: 1px solid rgba(135, 96, 87, 0.267);
+    background-color: rgba(167, 79, 52, 0.219);
+}
+.game-mode{
+    background-color:rgb(108, 125, 159, 0.2); 
+    color: rgb(175, 16, 93);
+}
+.duration{
+    list-style: none; 
+    width: 10vw;
+    text-align: center;
+    font-size: medium;
+    color: rgba(70, 72, 72, 0.917);
+    background-color:rgba(108, 125, 159, 0.243);
+}
+.dispaly-name{
+    list-style: none; 
+    width: 10vw;
+    text-align: center;
+    font-size: large;
+    color: rgb(35, 36, 36);
+    background-color:rgba(212, 84, 97, 0.2);
+}
+header {
+    background-color: rgb(132, 140, 140, 0.2);
+    max-width: 100%;
+    height: auto;
+}
+button {
+    background-color: rgba(82, 100, 104, 0.2);
+    border-color: transparent;
+    border-radius: 10px;
+    color: rgb(134, 21, 21)
+}
+.nav-ul{
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    list-style: none;
+}
+h1{
+    text-align: center;
+    color: rgb(134, 21, 21);
+}
