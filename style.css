@@ -1,0 +1,36 @@
+h1{
+    background-color: white;
+}
+
+body{
+    background-image: url(https://images.wallpapersden.com/image/download/valorant-hd-gaming-2022_bWlsZ2iUmZqaraWkpJRnZ2hprWZnams.jpg);
+    margin: auto;
+    height: auto;
+    width: auto;
+    opacity: 50;
+}
+
+nav{
+    background-color: white;
+}
+
+#agent-container{
+    background-color: white;
+    border-radius: 5px;
+}
+
+#weapon-container{
+    background-color: white;
+    border-radius: 5px;
+}
+
+#gameMode-container{
+        background-color: white;
+        border-radius: 5px;
+}
+
+#map-container{
+    background-color: white;
+    border-radius: 5px;
+}
+    
