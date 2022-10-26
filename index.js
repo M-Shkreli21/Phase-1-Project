@@ -86,11 +86,20 @@ function displayAgent(agent) {
                     agentDescription.remove()
                     pAbilities.remove()
                 }
+
+                agentImage.addEventListener('click', (e) => {
+                    e.preventDefault()
+                    if (agentName.textContent != "") {
+                        agentImage.removeChild(agentName)
+                        // agentName.remove()
+                        // agentDescription.remove()
+                        // pAbilities.remove()
+                    }
             })
 
         })
     })
-}
+})}
 
 gameModeClick.addEventListener('click', (e) => {
     e.preventDefault()
