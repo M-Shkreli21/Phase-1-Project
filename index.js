@@ -16,9 +16,14 @@ const agentImageCont = document.getElementById('agent-image-container')
 function homePage() {
     homeDiv.style.display = 'block'
     weaponDiv.style.display = 'none'
+    weaponDiv.replaceChildren();
     gameModeDiv.style.display = 'none'
+    gameModeDiv.replaceChildren();
     mapDiv.style.display = 'none'
+    mapDiv.replaceChildren();
     agentDiv.style.display = 'none'
+    agentImageCont.replaceChildren();
+    agentInfoCont.replaceChildren();
 }
 
 homeClick.addEventListener('click', homePage)
@@ -28,19 +33,25 @@ agentClick.addEventListener('click', (e) => {
     e.preventDefault()
     homeDiv.style.display = 'none'
     weaponDiv.style.display = 'none'
+    weaponDiv.replaceChildren();
     gameModeDiv.style.display = 'none'
+    gameModeDiv.replaceChildren();
     mapDiv.style.display = 'none'
-    // agentDiv.style.display = 'block'
-
+    mapDiv.replaceChildren();
+    agentDiv.style.display = 'block'
+    agentInfoCont.replaceChildren();
+    agentImageCont.replaceChildren();
+    
     fetch('https://valorant-api.com/v1/agents')
         .then(response => response.json())
         .then(agent => displayAgent(agent))
 })
 
 function displayAgent(agent) {
+
     agent.data.forEach(agent => {
         const agentImage = document.createElement('img')
-        const agentSelector = document.createElement('p')
+        // const agentSelector = document.createElement('p')
         const agentUUID = document.createElement('p')
         agentImage.classList.add('agent-img')
 
@@ -49,14 +60,17 @@ function displayAgent(agent) {
         if (agentUUID.textContent === '320b2a48-4d9b-a075-30f1-1f93a9b638fa') {
             agentImage.style.display = 'none'
         }
-        
+
         agentImage.src = agent.displayIconSmall
 
-        agentImageCont.appendChild(agentSelector)
-        agentSelector.appendChild(agentImage)
+        agentImageCont.appendChild(agentImage)
+        //agentDiv.appendChild(agentImageCont)
+
+        
         
         agentImage.addEventListener('click', (e) => {
             e.preventDefault()
+            agentInfoCont.replaceChildren()
 
             const agentName = document.createElement('h2')
             const agentDescription = document.createElement('p')
@@ -83,7 +97,7 @@ function displayAgent(agent) {
             agentName.textContent = agent.displayName
             agentDescription.textContent = agent.description
             
-
+            
             agentInfoCont.append(agentName)
             agentInfoCont.append(agentDescription)
             agentInfoCont.append(pAbilities)
@@ -97,28 +111,26 @@ function displayAgent(agent) {
                     pAbilities.remove()
                 }
 
-                agentImage.addEventListener('click', (e) => {
-                    e.preventDefault()
-                    if (agentName.textContent != "") {
-                        agentImage.removeChild(agentName)
-                        // agentName.remove()
-                        // agentDescription.remove()
-                        // pAbilities.remove()
-                    }
+
             })
 
         })
-    })
-})}
+    }
+    )}
 
 gameModeClick.addEventListener('click', (e) => {
     e.preventDefault()
 
     homeDiv.style.display = 'none'
     weaponDiv.style.display = 'none'
+    weaponDiv.replaceChildren()
     gameModeDiv.style.display = 'block'
+    gameModeDiv.replaceChildren()
     mapDiv.style.display = 'none'
+    mapDiv.replaceChildren()
     agentDiv.style.display = 'none'
+    agentImageCont.replaceChildren();
+    agentInfoCont.replaceChildren();
 
     const gameModeh1 = document.createElement('h1')
     gameModeh1.textContent = 'Game Mode:'
@@ -183,9 +195,14 @@ mapName.addEventListener('click', (e) => {
 
     homeDiv.style.display = 'none'
     weaponDiv.style.display = 'none'
+    weaponDiv.replaceChildren()
     gameModeDiv.style.display = 'none'
+    gameModeDiv.replaceChildren()
     mapDiv.style.display = 'block'
+    mapDiv.replaceChildren()
     agentDiv.style.display = 'none'
+    agentImageCont.replaceChildren();
+    agentInfoCont.replaceChildren();
 
     const Maph1 = document.createElement('h1')
     Maph1.textContent = 'Map:'
@@ -245,9 +262,14 @@ weaponClick.addEventListener('click', (e) => {
 
     homeDiv.style.display = 'none'
     weaponDiv.style.display = 'block'
+    weaponDiv.replaceChildren()
     gameModeDiv.style.display = 'none'
+    gameModeDiv.replaceChildren()
     mapDiv.style.display = 'none'
+    mapDiv.replaceChildren()
     agentDiv.style.display = 'none'
+    agentImageCont.replaceChildren();
+    agentInfoCont.replaceChildren();
 
     fetch('https://valorant-api.com/v1/weapons')
         .then(response => response.json())
