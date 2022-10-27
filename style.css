@@ -28,28 +28,45 @@ body {
     height: 70vh;
 }
 
+
 #agent-container{
     overflow-y: scroll;
     height: 70vh;
 }
+
 #agent-image-container{
     display: flex;
     flex-direction: row;
     text-rendering: optimizeSpeed;
     overflow-x: scroll;
+    cursor: pointer;
+    /* top: 0; */
+}
+
+h3{
+    color: rgb(135, 18, 18);
+    background-color: rgba(184, 184, 184, 0.616);
+    text-align: center;
+}
+
+#agent-info-container{
+    background-color: rgba(184, 184, 184, 0.616)
 }
 
 #map-container{
     overflow-y: scroll;
     height: 70vh;
+    /* background-color: rgba(184, 184, 184, 0.616); */
 }
 #gameMode-container{
     overflow-y: scroll;
     height: 70vh;
+    background-color: rgba(184, 184, 184, 0.616);
 }
 #weapon-container{
     overflow-y: scroll;
     height: 70vh;
+    background-color: rgba(184, 184, 184, 0.616);
 }
 .map-image{
     /* width: 40vw; */
@@ -65,10 +82,11 @@ body {
     font-size: x-large;
     color: rgb(87, 67, 67);
     border: 1px solid rgba(135, 96, 87, 0.267);
-    background-color: rgba(167, 79, 52, 0.219);
+    background-color: rgba(167, 79, 52, 0.545);
+    cursor:pointer;
 }
 .game-mode{
-    background-color:rgb(108, 125, 159, 0.2); 
+    background-color: rgba(184, 184, 184, 0.616);
     color: rgb(134, 21, 21);
 }
 .duration{
@@ -88,7 +106,7 @@ body {
     background-color:rgba(212, 84, 97, 0.2);
 }
 header {
-    background-color: rgb(132, 140, 140, 0.2);
+    background-color: rgba(132, 140, 140, 0.592);
     max-width: 100%;
     height: auto;
 }
@@ -96,7 +114,8 @@ button {
     background-color: rgba(82, 100, 104, 0.2);
     border-color: transparent;
     border-radius: 10px;
-    color: rgb(134, 21, 21)
+    color: rgb(134, 21, 21);
+    cursor: pointer;
 }
 .nav-ul{
     display: flex;
@@ -107,7 +126,7 @@ button {
 h1{
     text-align: center;
     color: rgb(134, 21, 21);
-    background-color: rgba(82, 100, 104, 0.2);
+    background-color: rgba(184, 184, 184, 0.616);
     border-color: transparent;
 }
 .home-page{
@@ -139,7 +158,7 @@ h2{
     text-align: center;
     font-size: medium;
     color: rgba(70, 72, 72, 0.917);
-    background-color:rgba(108, 125, 159, 0.243);
+    background-color:rgba(108, 125, 159, 0.679);
 }
 .ability-name {
     list-style: none; 
@@ -147,7 +166,7 @@ h2{
     text-align: center;
     font-size: medium;
     color: rgba(70, 72, 72, 0.917);
-    background-color:rgba(193, 86, 101, 0.482);
+    background-color:rgba(193, 86, 100, 0.644);
 }
 .ability-description {
     color: rgb(35, 36, 36);
@@ -160,13 +179,14 @@ h2{
 .weapon-image{
     width: 300px;
     height: auto;
+    cursor: pointer;
 }
 .weapon-shop{
     color: rgba(70, 72, 72, 0.917);
-    background-color:rgba(108, 125, 159, 0.243); 
+    background-color:rgba(108, 125, 159, 0.639); 
     font-size: x-large;
-    width: 30%;
+    width: 40%;
     color: rgba(70, 72, 72, 0.917);
     border: 1px solid rgba(135, 96, 87, 0.267);
-    background-color: rgba(167, 79, 52, 0.219);
+    background-color: rgba(167, 79, 52, 0.321);
 }
