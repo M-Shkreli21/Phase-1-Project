@@ -340,7 +340,7 @@ function displayWeapon(weapons) {
             statsADS.textContent = 'Weapon Stats ADS:'
             statsHipFire.textContent = `Weapon Stats Hip Fire:`
             fireRateHipFire.textContent = `Hip Fire Fire Rate: ${weapons.weaponStats.fireRate}`
-            firstBulletHipFire.textContent = `Hip Fire First Bullet Accuracy: ${weapons.weaponStats.firstBulletAccuracy}%`
+            firstBulletHipFire.textContent = `Hip Fire First Bullet Accuracy: ${weapons.weaponStats.firstBulletAccuracy}`
 
             //If statement to eliminate the null error when trying to display ADS information about weapons that are not able to ADS.
             if (weaponName.textContent === "Judge") {

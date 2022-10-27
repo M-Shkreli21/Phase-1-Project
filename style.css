@@ -114,7 +114,8 @@ button {
     background-color: rgba(82, 100, 104, 0.2);
     border-color: transparent;
     border-radius: 10px;
-    color: rgb(134, 21, 21)
+    color: rgb(134, 21, 21);
+    cursor: pointer;
 }
 .nav-ul{
     display: flex;
@@ -184,7 +185,7 @@ h2{
     color: rgba(70, 72, 72, 0.917);
     background-color:rgba(108, 125, 159, 0.639); 
     font-size: x-large;
-    width: 30%;
+    width: 40%;
     color: rgba(70, 72, 72, 0.917);
     border: 1px solid rgba(135, 96, 87, 0.267);
     background-color: rgba(167, 79, 52, 0.321);
