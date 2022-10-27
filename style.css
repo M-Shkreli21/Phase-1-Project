@@ -39,7 +39,14 @@ body {
     flex-direction: row;
     text-rendering: optimizeSpeed;
     overflow-x: scroll;
+    cursor: pointer;
     /* top: 0; */
+}
+
+h3{
+    color: rgb(135, 18, 18);
+    background-color: rgba(184, 184, 184, 0.616);
+    text-align: center;
 }
 
 #agent-info-container{
@@ -76,6 +83,7 @@ body {
     color: rgb(87, 67, 67);
     border: 1px solid rgba(135, 96, 87, 0.267);
     background-color: rgba(167, 79, 52, 0.545);
+    cursor:pointer;
 }
 .game-mode{
     background-color: rgba(184, 184, 184, 0.616);
@@ -170,6 +178,7 @@ h2{
 .weapon-image{
     width: 300px;
     height: auto;
+    cursor: pointer;
 }
 .weapon-shop{
     color: rgba(70, 72, 72, 0.917);

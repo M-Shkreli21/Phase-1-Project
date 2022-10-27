@@ -1,3 +1,4 @@
+//Global variables used throughout the entire application
 const homeDiv = document.querySelector('#homepage-container')
 const agentDiv = document.querySelector('#agent-container')
 const weaponDiv = document.querySelector('#weapon-container')
@@ -12,7 +13,9 @@ const gameModeClick = document.getElementById('game_mode')
 const mapName = document.getElementById('map_name')
 const agentInfoCont = document.getElementById('agent-info-container')
 const agentImageCont = document.getElementById('agent-image-container')
+const agentHoverDiv = document.querySelector('#hover-event-container')
 
+// Function used to display the homepage. The replace children lines of code are to allow each tab to reset when clicked out of preventing duplicating data. Set up in each tab.
 function homePage() {
     homeDiv.style.display = 'block'
     weaponDiv.style.display = 'none'
@@ -28,7 +31,7 @@ function homePage() {
 
 homeClick.addEventListener('click', homePage)
 
-
+//Uses the Valorant API to fetch and bring the data to our application.
 agentClick.addEventListener('click', (e) => {
     e.preventDefault()
     homeDiv.style.display = 'none'
@@ -41,37 +44,44 @@ agentClick.addEventListener('click', (e) => {
     agentDiv.style.display = 'block'
     agentInfoCont.replaceChildren();
     agentImageCont.replaceChildren();
-    
+
     fetch('https://valorant-api.com/v1/agents')
         .then(response => response.json())
         .then(agent => displayAgent(agent))
 })
 
+//Callback function used to render the data brought in by the API.
 function displayAgent(agent) {
-
     agent.data.forEach(agent => {
         const agentImage = document.createElement('img')
         // const agentSelector = document.createElement('p')
         const agentUUID = document.createElement('p')
+        const hoverAgentName = document.createElement('h3')
         agentImage.classList.add('agent-img')
 
+        //Agent UUID is only used to remove a duplicate agent that was found in the API source.
         agentUUID.textContent = agent.uuid
-
         if (agentUUID.textContent === '320b2a48-4d9b-a075-30f1-1f93a9b638fa') {
             agentImage.style.display = 'none'
         }
 
         agentImage.src = agent.displayIconSmall
-
         agentImageCont.appendChild(agentImage)
+        agentHoverDiv.appendChild(hoverAgentName)
         //agentDiv.appendChild(agentImageCont)
+        //Event Listener to have agent name display when mouse over the agent image and disappear when mouse out.
+        agentImage.addEventListener('mouseover', (e) => {
+            hoverAgentName.style.display = 'block'
+            hoverAgentName.textContent = agent.displayName
+        })
+        agentImage.addEventListener('mouseout', (e) => {
+            hoverAgentName.style.display = "none"
+        })
 
-        
-        
+        //Click event listener that takes the image displayed for the agent and displays information such as description, abilities, etc.
         agentImage.addEventListener('click', (e) => {
             e.preventDefault()
             agentInfoCont.replaceChildren()
-
             const agentName = document.createElement('h2')
             const agentDescription = document.createElement('p')
             const pAbilities = document.createElement('ul')
@@ -85,7 +95,7 @@ function displayAgent(agent) {
                 pEachAbilitySlot.textContent = abilities.slot
 
                 agentDescription.classList.add('agent-description')
-                pEachAbilitySlot.classList.add("ability-slot")  
+                pEachAbilitySlot.classList.add("ability-slot")
                 pEachAbilityName.classList.add('ability-name')
                 pEachAbilityDescription.classList.add('ability-description')
 
@@ -96,13 +106,12 @@ function displayAgent(agent) {
 
             agentName.textContent = agent.displayName
             agentDescription.textContent = agent.description
-            
-            
+
             agentInfoCont.append(agentName)
             agentInfoCont.append(agentDescription)
             agentInfoCont.append(pAbilities)
-            
 
+            //Second event listener in function in order to stop duplication of data when clicked multiple times.
             agentImage.addEventListener('click', (e) => {
                 e.preventDefault()
                 if (agentName.textContent != "") {
@@ -110,14 +119,17 @@ function displayAgent(agent) {
                     agentDescription.remove()
                     pAbilities.remove()
                 }
-
-
+                //A double click event listener that when activated will takeout the agent information used mostly for user friendly functionality.
+                agentImageCont.addEventListener('dblclick', (e) => {
+                    agentInfoCont.innerHTML = ""
+                })
             })
-
         })
     }
-    )}
+    )
+}
 
+//Function used to grab the data for game modes from valorant API, has a different path than the agents path.
 gameModeClick.addEventListener('click', (e) => {
     e.preventDefault()
 
@@ -142,6 +154,7 @@ gameModeClick.addEventListener('click', (e) => {
         .then((gameMode) => displayGameMode(gameMode))
 })
 
+//Similar to the Agent function, this displays the information about the Game mode.
 function displayGameMode(gameMode) {
     gameMode.data.forEach(gameMode => {
         const gameModeDescription = document.createElement('p')
@@ -152,11 +165,12 @@ function displayGameMode(gameMode) {
         time.classList.add('duration')
         nombre.classList.add('dispaly-name')
         gameModeDescription.classList.add('game-mode-description')
-        
+
         gameModeDiv.appendChild(gameModeDescription)
         gameModeDiv.appendChild(nombre)
         gameModeDiv.appendChild(time)
 
+        //Below if statements are hard coded descriptions for game modes due to lack of option from the API.
         if (nombre.textContent === "Standard") {
             gameModeDescription.textContent = 'In the standard non-ranked mode, the match is played as best of 25 - the first team to win 13 rounds wins the match. The attacking team has a bomb-type device called the Spike. They must deliver and activate the Spike on one of the multiple specified locations (bomb sites). If the attacking team successfully protects the activated Spike for 45 seconds it detonates, destroying everything in a specific area, and they receive a point. If the defending team can deactivate the spike, or the 100-second round timer expires without the attacking team activating the spike, the defending team receives a point. If all the members of a team are eliminated before the spike is activated, or if all members of the defending team are eliminated after the spike is activated, the opposing team earns a point. If both teams win 12 rounds, sudden death occurs, in which the winning team of that round wins the match'
         }
@@ -190,6 +204,7 @@ function displayGameMode(gameMode) {
     })
 }
 
+//Function used to grab the data for maps from valorant API, has a different path than the previous fetches.
 mapName.addEventListener('click', (e) => {
     e.preventDefault()
 
@@ -213,6 +228,7 @@ mapName.addEventListener('click', (e) => {
         .then((Map) => displayGameMap(Map))
 })
 
+//Similar function used to display game map. Like the agent function it has the ability to double click to close out information on the currently viewed map.
 function displayGameMap(Map) {
     Map.data.forEach(Map => {
 
@@ -224,7 +240,7 @@ function displayGameMap(Map) {
 
         mapName_p.textContent = Map.displayName
         mapName_p.classList.add('map-name-p')
-        
+
         mapDiv.appendChild(mapName)
         mapName.appendChild(mapName_p)
         mapName.classList.add('map-name')
@@ -253,10 +269,16 @@ function displayGameMap(Map) {
                     mapCordinates.remove()
                 }
             })
+            mapName.addEventListener('dblclick', (e) => {
+                mapImage.remove();
+                mapOverview.remove();
+                mapCordinates.remove();
+            })
         })
     })
 }
 
+//Function used to grab the data for weapons from valorant API, has a different path than the previous fetches.
 weaponClick.addEventListener('click', (e) => {
     e.preventDefault()
 
@@ -276,6 +298,7 @@ weaponClick.addEventListener('click', (e) => {
         .then(weapons => displayWeapon(weapons))
 })
 
+//Larger but similar function to the rest that exist in this application.
 function displayWeapon(weapons) {
     weapons.data.forEach(weapons => {
         const weaponName = document.createElement('h2')
@@ -285,7 +308,7 @@ function displayWeapon(weapons) {
         weaponName.textContent = weapons.displayName
         weaponImage.src = weapons.displayIcon
 
-       weaponImage.classList.add('weapon-image')
+        weaponImage.classList.add('weapon-image')
 
         weaponDiv.appendChild(weaponSelector)
         weaponSelector.appendChild(weaponName)
@@ -319,6 +342,7 @@ function displayWeapon(weapons) {
             fireRateHipFire.textContent = `Hip Fire Fire Rate: ${weapons.weaponStats.fireRate}`
             firstBulletHipFire.textContent = `Hip Fire First Bullet Accuracy: ${weapons.weaponStats.firstBulletAccuracy}%`
 
+            //If statement to eliminate the null error when trying to display ADS information about weapons that are not able to ADS.
             if (weaponName.textContent === "Judge") {
                 statsADS.style.display = "none"
                 fireRateADS.remove()
@@ -385,6 +409,9 @@ function displayWeapon(weapons) {
                 if (weaponShop.textContent != "") {
                     weaponShop.remove()
                 }
+            })
+            weaponImage.addEventListener('dblclick', (e) => {
+                weaponShop.remove()
             })
         })
     })
