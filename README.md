@@ -10,7 +10,7 @@ Each tab is a seperate aspect of the game:
 
 -Agents tab contains a list of all the possible characters(agents) that a player can choose from. Each agent has unique abilities that seperate them out from the others. Within the tab you can see the images of each agent, when you hover your mouse over you will see the name of said agent displayed below. If you click on the image you will see a full description along with the abilities of each agent. In order to exit out of the agent information you must double click the image.
 
--The Game Modes tab contains a list of all the possible game modes as well as the duration of each match and a dewcription of the game mode itself.
+-The Game Modes tab contains a list of all the possible game modes as well as the duration of each match and a description of the game mode itself. (descriptions were taken from the Valorant Vikipedia page.)
 
 -The Maps tab works similarly with the agents tab in that within the tab is a list of all maps currently available in the game. If you click on each map name you will see a mini map, an overview of the map and the co-ordinates that were all provided by the API. Like the agents tab, in order to retract the map information you must double click.
 
